@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import TextBox from "./components/TextBox";
 import Arrows from "./components/Arrows";
@@ -27,12 +28,20 @@ const App = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
+        const arrayOfData = Object.keys(response.data.data).map(
+          (key) => response.data.data[key]
+        );
+        setLanguages(arrayOfData);
       })
       .catch(function (error) {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    fetchLanguages();
+  }, []);
 
   const arrowLanguageSwitcherHandler = () => {
     const tmpInputLanguage = inputLanguage;
@@ -62,7 +71,7 @@ const App = () => {
           />
         </>
       )}
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && <Modal setShowModal={setShowModal} languages={languages} />}
     </div>
   );
 };
