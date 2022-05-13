@@ -8,8 +8,10 @@ import Modal from "./components/Modal";
 
 const App = () => {
   const [showModal, setShowModal] = useState(null);
+  const [languages, setLanguages] = useState(null);
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
+  const [textToTranslate, setTexttoTranslate] = useState("");
 
   const fetchLanguages = async () => {
     const axios = require("axios");
@@ -36,6 +38,9 @@ const App = () => {
       })
       .catch(function (error) {
         console.error(error);
+        setLanguages(["Português"]);
+        setInputLanguage("Português");
+        setOutputLanguage("Português");
       });
   };
 
@@ -71,7 +76,18 @@ const App = () => {
           />
         </>
       )}
-      {showModal && <Modal setShowModal={setShowModal} languages={languages} />}
+      {showModal && (
+        <Modal
+          setShowModal={setShowModal}
+          languages={languages}
+          chosenLanguage={
+            showModal === "input" ? inputLanguage : outputLanguage
+          }
+          setChosenLanguage={
+            showModal === "input" ? setInputLanguage : setOutputLanguage
+          }
+        />
+      )}
     </div>
   );
 };

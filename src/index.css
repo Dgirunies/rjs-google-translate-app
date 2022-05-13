@@ -1,3 +1,21 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #38383a;
+  border-radius: 20px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 * {
   font-family: arial, sans-serif;
 }
@@ -41,7 +59,6 @@ textarea {
   border: none;
   resize: none;
   padding: 18px;
-  width: 200px !important;
   height: 146px;
   border-radius: 10px;
   outline: none;
@@ -77,4 +94,5 @@ textarea {
   width: 26px;
   height: 26px;
   fill: #5a5a5d;
+  cursor: pointer;
 }
