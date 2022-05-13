@@ -1,9 +1,9 @@
 import React from "react";
 
-const SelectDropDown = () => {
+const SelectDropDown = ({ selectedLanguage }) => {
   return (
     <div className="select-drop-down">
-      <input />
+      <input value={selectedLanguage} />
       <div className="down-arrow">
         <svg
           focusable="false"
