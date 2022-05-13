@@ -10,7 +10,7 @@ const App = () => {
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
 
-  const getLanguages = async () => {
+  const fetchLanguages = async () => {
     const axios = require("axios");
 
     const options = {
