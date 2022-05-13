@@ -5,7 +5,7 @@ import Modal from "./components/Modal";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app">
       <TextBox style="input" />
       <TextBox style="output" />
     </div>
