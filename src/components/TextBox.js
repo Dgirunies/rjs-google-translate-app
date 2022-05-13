@@ -1,7 +1,28 @@
 import React from "react";
 import SelectDropDown from "./SelectDropDown";
 
-const TextBox = ({ selectedLanguage, style, setShowModal }) => {
+const TextBox = ({
+  selectedLanguage,
+  style,
+  setShowModal,
+  translateText,
+  textToTranslate,
+  setTextToTranslate,
+  translatedText,
+  setTranslatedText,
+}) => {
+  const textAreaKeyPressedHandler = (e) => {
+    if (e.key === "Enter") {
+      translateText();
+    }
+    return;
+  };
+
+  const clearTextHandler = () => {
+    setTextToTranslate("");
+    setTranslatedText("");
+  };
+
   return (
     <div className={style}>
       <SelectDropDown
@@ -12,7 +33,15 @@ const TextBox = ({ selectedLanguage, style, setShowModal }) => {
       <textarea
         placeholder={style === "input" ? "Enter Text" : "Translation"}
         disabled={style === "output"}
+        onKeyUp={translateText ? textAreaKeyPressedHandler : null}
+        onChange={(e) => setTextToTranslate(e.target.value)}
+        value={style === "input" ? textToTranslate : translatedText}
       />
+      {style === "input" && (
+        <div className="delete" onClick={clearTextHandler}>
+          X
+        </div>
+      )}
     </div>
   );
 };
