@@ -1,10 +1,14 @@
 import React from "react";
 import SelectDropDown from "./SelectDropDown";
 
-const TextBox = ({ selectedLanguage, style }) => {
+const TextBox = ({ selectedLanguage, style, setShowModal }) => {
   return (
     <div className={style}>
-      <SelectDropDown selectedLanguage={selectedLanguage} />
+      <SelectDropDown
+        selectedLanguage={selectedLanguage}
+        setShowModal={setShowModal}
+        style={style}
+      />
       <textarea
         placeholder={style === "input" ? "Enter Text" : "Translation"}
         disabled={style === "output"}
