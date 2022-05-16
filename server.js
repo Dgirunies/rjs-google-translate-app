@@ -14,7 +14,7 @@ app.get("/languages", async (req, res) => {
     method: "GET",
     headers: {
       "X-RapidAPI-Host": process.env.RAPID_API_HOST,
-      "X-RapidAPI-Host": process.env.RAPID_API_HOST,
+      "X-RapidAPI-Host": process.env.RAPID_API_KEY,
     },
   };
 
@@ -44,7 +44,7 @@ app.get("/translate", async (req, res) => {
     },
     headers: {
       "X-RapidAPI-Host": process.env.RAPID_API_HOST,
-      "X-RapidAPI-Host": process.env.RAPID_API_HOST,
+      "X-RapidAPI-Host": process.env.RAPID_API_KEY,
     },
   };
 

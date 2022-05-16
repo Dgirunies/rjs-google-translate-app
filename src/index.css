@@ -35,32 +35,6 @@ body {
   height: 360px;
 }
 
-input {
-  border: 1px solid #818588;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #bdc1c6;
-  font-size: 14px;
-  height: 40px;
-  background-color: transparent;
-  width: 100%;
-}
-
-.select-drop-down input {
-  color: #8ab4f8;
-  padding: 5px 15px;
-  font-size: 15px;
-}
-
-.select-drop-down .down-arrow svg {
-  position: relative;
-  left: 265px;
-  top: -33px;
-  width: 26px;
-  height: 26px;
-  fill: #8ab4f8;
-}
-
 .arrow-container {
   padding: 5px 15px;
 }

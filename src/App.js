@@ -3,7 +3,6 @@ import axios from "axios";
 
 import TextBox from "./components/TextBox";
 import Arrows from "./components/Arrows";
-import Button from "./components/Button";
 import Modal from "./components/Modal";
 
 const App = () => {

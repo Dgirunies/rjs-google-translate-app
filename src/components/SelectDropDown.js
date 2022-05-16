@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./SelectDropDown.css";
+
 const SelectDropDown = ({ style, setShowModal, selectedLanguage }) => {
   return (
     <div
@@ -8,7 +10,7 @@ const SelectDropDown = ({ style, setShowModal, selectedLanguage }) => {
         setShowModal(style);
       }}
     >
-      <input value={selectedLanguage} />
+      <input value={selectedLanguage} onChange={() => {}} />
       <div className="down-arrow">
         <svg
           focusable="false"
