@@ -15,34 +15,8 @@ const App = () => {
   const [translatedText, setTranslatedText] = useState("");
 
   const fetchLanguages = async () => {
-    const axios = require("axios");
-
-    const options = {
-      method: "GET",
-      url: "https://google-translate20.p.rapidapi.com/languages",
-      headers: {
-        "X-RapidAPI-Host": "google-translate20.p.rapidapi.com",
-        "X-RapidAPI-Key": "",
-      },
-    };
-
-    console.log(process.env);
-
-    axios
-      .request(options)
-      .then(function (response) {
-        // console.log(response.data);
-        const arrayOfData = Object.keys(response.data.data).map(
-          (key) => response.data.data[key]
-        );
-        setLanguages(arrayOfData);
-      })
-      .catch(function (error) {
-        console.error(error);
-        setLanguages(["Português"]);
-        setInputLanguage("Português");
-        setOutputLanguage("Português");
-      });
+    const response = await axios("http://localhost:8000/languages");
+    setLanguages(response.data);
   };
 
   useEffect(() => {
