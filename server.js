@@ -33,4 +33,31 @@ app.get("/languages", async (req, res) => {
   }
 });
 
+app.get("/translate", async (req, res) => {
+  const { textToTranslate, outputLanguage, inputLanguage } = req.query;
+  const options = {
+    method: "GET",
+    params: {
+      text: textToTranslate,
+      tl: outputLanguage,
+      sl: inputLanguage,
+    },
+    headers: {
+      "X-RapidAPI-Host": process.env.RAPID_API_HOST,
+      "X-RapidAPI-Host": process.env.RAPID_API_HOST,
+    },
+  };
+
+  try {
+    const response = await axios(
+      "https://google-translate20.p.rapidapi.com/translate",
+      options
+    );
+    res.status(200).json(response.data.data.translation);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error });
+  }
+});
+
 app.listen(PORT, () => console.log("Server Running on Port " + PORT));

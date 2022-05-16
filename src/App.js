@@ -8,15 +8,22 @@ import Modal from "./components/Modal";
 
 const App = () => {
   const [showModal, setShowModal] = useState(null);
-  const [languages, setLanguages] = useState(null);
+  const [languages, setLanguages] = useState([]);
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
   const [textToTranslate, setTextToTranslate] = useState("");
   const [translatedText, setTranslatedText] = useState("");
 
   const fetchLanguages = async () => {
-    const response = await axios("http://localhost:8000/languages");
-    setLanguages(response.data);
+    try {
+      const response = await axios("http://localhost:8000/languages");
+      setLanguages(response.data);
+    } catch (err) {
+      console.error(err);
+      setLanguages(["Português"]);
+      setInputLanguage("Português");
+      setOutputLanguage("Português");
+    }
   };
 
   useEffect(() => {
@@ -29,34 +36,18 @@ const App = () => {
     setOutputLanguage(tmpInputLanguage);
   };
 
-  const translateText = () => {
+  const translateText = async () => {
     if (inputLanguage === outputLanguage) {
       console.log(textToTranslate);
       setTranslatedText(textToTranslate);
       return;
     }
-    const options = {
-      method: "GET",
-      url: "https://google-translate20.p.rapidapi.com/translate",
-      params: {
-        text: textToTranslate,
-        tl: outputLanguage,
-        sl: inputLanguage,
-      },
-      headers: {
-        "X-RapidAPI-Host": "google-translate20.p.rapidapi.com",
-        "X-RapidAPI-Key": "",
-      },
-    };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        setTranslatedText(response.data.data.translation);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    const data = { textToTranslate, outputLanguage, inputLanguage };
+
+    const response = await axios("http://localhost:8000/translate", {
+      params: data,
+    });
   };
 
   return (

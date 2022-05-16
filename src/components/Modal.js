@@ -15,7 +15,7 @@ const Modal = ({
   );
 
   const inputChangeHandler = (e) => {
-    setSearchedLanguage(e.target.textContent);
+    setSearchedLanguage(e.target.value);
   };
 
   const selectLanguageHandler = (e) => {
@@ -26,7 +26,11 @@ const Modal = ({
   return (
     <div className="option-list">
       <div className="search-bar">
-        <input value={searchedLanguage} onChange={inputChangeHandler} />
+        <input
+          type="text"
+          value={searchedLanguage}
+          onChange={inputChangeHandler}
+        />
         <div
           className="close-button"
           onClick={() => {
