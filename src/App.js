@@ -56,8 +56,8 @@ const App = () => {
   };
 
   const translateText = () => {
-    alert(inputLanguage === outputLanguage);
     if (inputLanguage === outputLanguage) {
+      console.log(textToTranslate);
       setTranslatedText(textToTranslate);
       return;
     }
@@ -107,7 +107,7 @@ const App = () => {
           <TextBox
             selectedLanguage={outputLanguage}
             style="output"
-            translatedText={translateText}
+            translatedText={translatedText}
             setShowModal={setShowModal}
           />
         </>

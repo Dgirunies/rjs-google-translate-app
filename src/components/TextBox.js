@@ -1,6 +1,8 @@
 import React from "react";
 import SelectDropDown from "./SelectDropDown";
 
+import "./TextBox.css";
+
 const TextBox = ({
   selectedLanguage,
   style,
@@ -39,7 +41,7 @@ const TextBox = ({
       />
       {style === "input" && (
         <div className="delete" onClick={clearTextHandler}>
-          X
+          🗙
         </div>
       )}
     </div>

@@ -46,31 +46,6 @@ input {
   width: 100%;
 }
 
-.output,
-.input {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-}
-
-textarea {
-  background-color: transparent;
-  color: #bdc1c6;
-  border: none;
-  resize: none;
-  padding: 18px;
-  height: 146px;
-  border-radius: 10px;
-  outline: none;
-  overflow: auto;
-  font-size: 28px;
-  margin-top: 10px;
-}
-
-.output textarea {
-  background-color: #303134;
-}
-
 .select-drop-down input {
   color: #8ab4f8;
   padding: 5px 15px;
